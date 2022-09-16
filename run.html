@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<style>
+    label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+body {
+  font-family: sans-serif;
+}
+</style>
+
+<body>
+    <h1>Folder upload</h1>
+
+    <label for="folder">Select folder</label>
+    <input type="file" id="folder" webkitdirectory multiple/>
+    
+    <h2>Selected Files</h2>
+    
+    <ul>
+    </ul>
+</body>
+
+<script>
+    document.getElementById("folder").addEventListener("change", function(event) {
+  var output = document.querySelector("ul");
+  var files = event.target.files;
+
+  for (var i=0; i<files.length; i++) {
+    var item = document.createElement("li");
+    item.innerHTML = files[i].webkitRelativePath;
+    output.appendChild(item);
+  };
+}, false);
+</script>
+
+</html>
